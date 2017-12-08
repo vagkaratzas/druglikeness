@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-#setwd("C:/Users/vagos/Desktop/Bio/Paper-CoDReS")
+
 suppressMessages(library("ChemmineR"))
 suppressMessages(library("ChemmineOB"))
 
@@ -7,7 +7,7 @@ args = commandArgs(trailingOnly = TRUE) #allow use of args
 if (length(args) != 1) { #check if correct number of args
 	stop("Need one input argument file containing drug SMILES.", call.=FALSE) #if not exactly one arg, throw error
 }
-smiles_matrix <- read.csv(args[1], header = FALSE) #smiles-input.txt
+smiles_matrix <- read.csv(args[1], header = FALSE) 
 print("### Lipinski Rule of Five - Druglikeness Violations ###")
 sdf <- apply(smiles_matrix, 1, smiles2sdf) #1 = rows, convert smiles to sdfs
 openbabel <- lapply(sdf, propOB) #returns all the data we need to figure Lipinski's rules
